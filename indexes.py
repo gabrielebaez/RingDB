@@ -56,7 +56,24 @@ class AEVT:
 
 
 class VAET:
-    pass
+    def __init__(self):
+        self.VAET_index = {}
+    
+    def insert(self, datom):
+        key = datom.value
+
+        if key in self.VAET_index:
+            self.VAET_index[key][datom.attribute].append([datom.entity, datom.tx])
+        else:
+            self.VAET_index[key] = {}
+            self.VAET_index[key][datom.attribute] = []
+            self.VAET_index[key][datom.attribute].append([datom.entity, datom.tx])
+    
+    def get(self, key):
+        try:
+            return self.VAET_index[key]
+        except Exception as e:
+            raise e
 
 
 class AVET:
