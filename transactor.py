@@ -11,6 +11,7 @@ class Transactor:
         self.vaet = VAET()
         self.log_index = LogIndex()
         self.t = 0
+        self.id = 0
     
     def insert(self, data):
         try:
@@ -23,24 +24,14 @@ class Transactor:
         except Exception as e:
             print(e)
 
+    def create_entity(self, namespace, schema):
+        for k, v in schema.items():
+            self.insert(Data(self.id, f'{k}', v))
+        self.id += 1
+        return True
+    
+    def create_table(self, schema):
+        pass
 
-if __name__ == "__main__":
-    db = Transactor()
-
-    db.insert(Data('JC', 'Lives in', 'Rome'))
-    db.insert(Data('B', 'Lives in', 'Rome'))
-    db.insert(Data('Cleo', 'Lives in', 'Egypt'))
-    db.insert(Data('Rome', 'river', 'Tiber'))
-    db.insert(Data('Egypt', 'river', 'Nile'))
-
-    print("AEVT: ")
-    print(db.aevt.AEVT_index)
-    print("------")
-    print("EAVT: ")
-    print(db.eavt.EAVT_index)
-    print("------")
-    print("VAET: ")
-    print(db.vaet.VAET_index)
-
-    for i in db.log_index.log_index:
-        print(i)
+    def delete_entity(self, entity):
+        pass
