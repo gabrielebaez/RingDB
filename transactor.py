@@ -1,8 +1,8 @@
 from indexes import Data, Datom
-from indexes import AVET, LogIndex
 from indexes import EAVT, AEVT
+from indexes import LogIndex
 from indexes import VAET
-
+# from indexes import AVET
 
 class Transactor:
     def __init__(self):
@@ -24,7 +24,7 @@ class Transactor:
         except Exception as e:
             print(e)
 
-    def create_entity(self, namespace, schema):
+    def create_entity(self, schema):
         for k, v in schema.items():
             self.insert(Data(self.id, f'{k}', v))
         self.id += 1

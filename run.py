@@ -1,4 +1,4 @@
-from transactor import Transactor, Data, Datom
+from transactor import Transactor, Data
 
 
 db = Transactor()
