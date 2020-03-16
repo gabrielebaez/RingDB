@@ -14,10 +14,6 @@ class BaseIndex(ABC):
     @abstractmethod
     def get(self, key):
         pass
-    
-    @abstractmethod
-    def persist(self, index):
-        pass
 
 
 class EAVT(BaseIndex):
@@ -38,11 +34,8 @@ class EAVT(BaseIndex):
             return self.EAVT_index[key]
         except Exception as e:
             raise e
-    
-    def persist(self):
-        print(self.EAVT_index)
 
- 
+
 class AEVT:
     def __init__(self):
         self.AEVT_index = {}

@@ -1,7 +1,7 @@
-from indexes import Data, Datom, EAVT
+from indexes import Data, Datom
 from indexes import AVET, LogIndex
 from indexes import EAVT, AEVT
-from indexes import VAET, AVET
+from indexes import VAET
 
 
 class Transactor:
@@ -12,7 +12,7 @@ class Transactor:
         self.log_index = LogIndex()
         self.t = 0
         self.id = 0
-    
+
     def insert(self, data):
         try:
             datom = Datom(data.entity, data.attribute, data.value, self.t)
@@ -29,7 +29,7 @@ class Transactor:
             self.insert(Data(self.id, f'{k}', v))
         self.id += 1
         return True
-    
+
     def create_table(self, schema):
         pass
 
